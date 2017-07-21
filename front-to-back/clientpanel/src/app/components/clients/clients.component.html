@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6"><h2><i class="fa fa-users"></i> Clients</h2></div>
+  <div class="col-md-6">
+    <h5 class="pull-right text-muted">Total owed: {{totalOwed | currency:'BRL':true}}</h5>
+  </div>
+</div>
+<table *ngIf="clients?.length > 0;else noClients" class="table table-striped">
+  <thead class="thead-inverse">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Balance</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{client.$key}}</td>
+      <td>{{client.firstName}} {{client.lastName}}</td>
+      <td>{{client.email}}</td>
+      <td>{{client.balance | currency:'BRL':true}}</td>
+      <td>
+        <a [routerLink]="['/client/'+client.$key]" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noClients>
+  <hr>
+  <h5>There are no clients in the system</h5>
+</ng-template>
