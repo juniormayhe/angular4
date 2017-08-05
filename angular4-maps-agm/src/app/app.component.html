@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl" size="100">
+  </div>
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+  </agm-map>
+
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">formatted_address <code>{{formatted_address}}</code></li>
+      <li class="list-group-item">latitude <code>{{latitude}}</code></li>
+      <li class="list-group-item">longitude <code>{{longitude}}</code></li>
+      <li class="list-group-item">zoom <code>{{zoom}}</code></li>
+    </ul>
+  </div>
+</div>
